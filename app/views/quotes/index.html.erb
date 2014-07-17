@@ -1,25 +1,28 @@
-<h1>Listing quotes</h1>
+<div class = "page-header">
+  <h2>List of all quotes</h2>
+</div>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Quote', new_quote_path, class:"btn btn-success" %>
 
 <% @quotes.each do |quote| %>
-  <tr>
-    <td><%= quote.user_id %></td>
-    <td><%= quote.content %></td>
-    <td><%= link_to 'Show', quote %></td>
-    <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
-    <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div class="status">
+  <div class="row">
+    <div class = "span1">
+      avatar
+    </div>
+    <div class = "span7">
+      <strong><%= quote.user.full_name %></strong>
+      <p><%= quote.content %></p>
+      <div class="meta">
+        <%= link_to time_ago_in_words(quote.created_at)+" ago", quote %>
+        <span class = "admin">
+          | <%= link_to 'Edit', edit_quote_path(quote) %>
+          | <%= link_to 'Delete',quote, method: :delete, confirm: "Are you sure ?" %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
-</table>
+  
 
-<br />
-
-<%= link_to 'New Quote', new_quote_path %>

@@ -1,0 +1,20 @@
+<div class = "row">
+	<div class="span8">
+		<h2>Signing is easier and safer</h2>
+		<p>Some one waiting for your quotes, come on logon and </p>
+	</div>
+	<div class="span4">
+		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name),html:{class:'well'}) do |f| %>
+  			<div class="form-inputs">
+  				<legend>Sign in</legend>
+    			<%= f.input :email, :required => false, :autofocus => true %>
+    			<%= f.input :password, :required => false %>
+    			<%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+ 			</div>
+  			<div class="form-actions">
+    			<%= f.button :submit, "Sign in" %>
+  			</div>
+		<% end %>
+		<%= render "devise/shared/links" %>
+	</div>
+</div>

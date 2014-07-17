@@ -5,7 +5,9 @@ Lovebook::Application.routes.draw do
   devise_for :users
   root to: 'quotes#index'
 devise_scope :user do
-  
+  get 'register', to: 'devise/registrations#new'
+  get 'signin', to: 'devise/sessions#new'
+  get 'signout', to: 'devise/sessions#destroy', method: :delete
 end
   
   # The priority is based upon order of creation:
