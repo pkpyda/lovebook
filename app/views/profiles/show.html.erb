@@ -1,9 +1,11 @@
 <div class="page-header">
 	<h2><%= @user.profile_name %></h2>
 </div>
-<% @quotes.each do |quote| %>
-	<div class="well">
-		<p><%= quote.content %></p>
-		<em><%= time_ago_in_words(quote.created_at) %></em>
-	</div>
-<% end %>	
+<% if @quotes %>
+	<% @quotes.each do |quote| %>
+		<div class="well">
+			<p><%= quote.content %></p>
+			<em><%= time_ago_in_words(quote.created_at) %></em>
+		</div>
+	<% end %>	
+<% end %>
