@@ -1,5 +1,8 @@
 Lovebook::Application.routes.draw do
 
+  get 'feed', to: 'quotes#index'
+  get "/:id", to: 'profiles#show'
+
   resources :quotes
 
   devise_for :users
